@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CommonListResource;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
+use App\Http\Requests\UserRequest;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
- 
+    protected UserService $service;
+
+    public function __construct(UserService $service)
+    {
+        $this->service = $service;
+    }
+
        /**
      * Display the specified resource.
      *
@@ -24,7 +23,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = $this->service->find($id);
         if($user === null){
             return response()->json(['erro' => 'Usuário não encontrado.'], 404);
         }
@@ -38,23 +37,15 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $user = User::where('id', $id)->first();
-        if($user === null){
+        $userAtualizado = $this->service->updateById($request->all(), $userId);
+
+        if ($userAtualizado === null) {
             return response()->json(['erro' => 'Usuário não encontrado.'], 404);
         }
-        $request->validate(User::rules(), User::feedback());
-        if(isset($request->password)){
-            $user->password = Hash::make($request->password);
-        }
-        if(isset($request->email) && $request->email != $user->email){
-            $user->email = $request->email;
-        }
-        $user->name = $request->name;
-        $user->save();
 
-        return response()->json($user, 200);
+        return response()->json($userAtualizado, 200);
     }
 
     /**
@@ -65,11 +56,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = $this->service->find($id);
         if($user === null){
             return response()->json(['erro' => 'Usuário não existe.'], 404);
         }
-        $user->delete();
+        $this->service->delete($user);
 
         return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);
     }

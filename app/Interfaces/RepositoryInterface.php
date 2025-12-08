@@ -1,0 +1,16 @@
+<?php
+namespace App\Interfaces;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
+interface RepositoryInterface
+{
+    public function all(string $orderBy, string $orderDirection): Collection;
+    public function create(array $attributes): Model|null;
+    public function find(int $id): Model|null;
+    public function delete(Model $model): bool;
+    public function update(Model $model, array $attributes): bool;
+    public function persist(Model $model): bool;
+    public function loadModel(): Model;    
+}

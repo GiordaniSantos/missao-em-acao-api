@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
-use App\Models\Crente;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
+use App\Services\CrenteService;
 
 class CrenteController extends Controller
 {
+    protected CrenteService $service;
+
+    public function __construct(CrenteService $service)
+    {
+        $this->service = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +23,10 @@ class CrenteController extends Controller
     public function index()
     {
         $id_usuario = request('id_usuario');
-        $query = Crente::query()
-            ->where('id_usuario', $id_usuario)
-            ->orderBy('created_at', 'desc')
-            ->take(15)
-            ->get();
 
-        return CommonListResource::collection($query);
+        $crentes = $this->service->getAllByUserId($id_usuario);
+
+        return CommonListResource::collection($crentes);
     }
 
     /**
@@ -37,12 +35,9 @@ class CrenteController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommonRequest $request)
     {
-        $request->validate(Crente::rules(), Crente::feedback());
-        $crente = new Crente();
-        $crente->id_usuario = $request->input('id_usuario');
-        $crente->save();
+        $crente = $this->service->create($request->all());
 
         return response()->json($crente, 201);
     }
@@ -56,7 +51,7 @@ class CrenteController extends Controller
     public function show($id)
     {
         $id_usuario = request('id_usuario');
-        $crente = Crente::where('id', $id)->where('id_usuario', $id_usuario)->first();
+        $crente = $this->service->findByIdAndUser($id, $id_usuario);
         if($crente === null){
             return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);
         }
@@ -70,17 +65,13 @@ class CrenteController extends Controller
      * @param  \App\Models\Crente  $crente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommonRequest $request, $id)
     {
-        $id_usuario = request('id_usuario');
-        $crente = Crente::where('id', $id)->where('id_usuario', $id_usuario)->first();
-        $request->validate(Crente::rules(), Crente::feedback());
-        $crente->id_usuario = $id_usuario;
-        $crente->nome = $request->nome;
-        $crente->created_at = Carbon::parse($request->created_at)->setTimezone('America/Sao_Paulo');
-        $crente->save();
+        $id_usuario = (int) request('id_usuario'); 
+      
+        $crenteAtualizado = $this->service->updateByIdAndUser($request->validated(), $id, $id_usuario);
 
-        return response()->json($crente, 200);
+        return response()->json($crenteAtualizado, 200);
     }
 
     /**
@@ -91,12 +82,13 @@ class CrenteController extends Controller
      */
     public function destroy($id)
     {
-        $id_usuario = request('id_usuario');
-        $crente = Crente::where('id', $id)->where('id_usuario', $id_usuario)->first();
-        if($crente === null){
+        $id_usuario = (int) request('id_usuario');
+
+        $deletadoComSucesso = $this->service->deleteByIdAndUser($id, $id_usuario);
+
+        if (!$deletadoComSucesso) {
             return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);
         }
-        $crente->delete();
 
         return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);
     }
