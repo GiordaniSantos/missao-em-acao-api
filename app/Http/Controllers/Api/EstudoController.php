@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\EstudoService;
 
-class EstudoController extends VisitaBaseCrudController
+class EstudoController extends BaseCrudController
 {
     protected EstudoService $service; 
 

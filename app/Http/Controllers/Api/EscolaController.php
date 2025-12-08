@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\EscolaService;
 
-class EscolaController extends VisitaBaseCrudController
+class EscolaController extends BaseCrudController
 {
     protected EscolaService $service; 
 

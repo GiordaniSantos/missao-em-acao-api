@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\EstudoBiblicoService;
 
-class EstudoBiblicoController extends VisitaBaseCrudController
+class EstudoBiblicoController extends BaseCrudController
 {
     protected EstudoBiblicoService $service; 
 

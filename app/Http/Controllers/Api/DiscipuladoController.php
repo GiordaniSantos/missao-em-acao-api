@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\DiscipuladoService;
 
-class DiscipuladoController extends VisitaBaseCrudController
+class DiscipuladoController extends BaseCrudController
 {
     protected DiscipuladoService $service; 
 

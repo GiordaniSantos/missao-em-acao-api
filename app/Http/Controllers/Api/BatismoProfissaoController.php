@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\BatismoProfissaoService;
 
-class BatismoProfissaoController extends VisitaBaseCrudController
+class BatismoProfissaoController extends BaseCrudController
 {
     protected BatismoProfissaoService $service; 
 

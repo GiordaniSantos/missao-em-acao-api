@@ -5,7 +5,7 @@ use App\Http\Requests\MembresiaRequest;
 use App\Http\Resources\MembresiaListResource;
 use App\Services\MembresiaService;
 
-class MembresiaController extends VisitaBaseCrudController
+class MembresiaController extends BaseCrudController
 {
     protected MembresiaService $service; 
 

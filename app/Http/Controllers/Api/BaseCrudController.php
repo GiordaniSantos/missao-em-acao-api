@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\CommonListResource;
 
-class VisitaBaseCrudController extends Controller
+class BaseCrudController extends Controller
 {
     protected $service;
     protected string $resourceCollection = '';

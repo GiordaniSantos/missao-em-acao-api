@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\PresidioService;
 
-class PresidioController extends VisitaBaseCrudController
+class PresidioController extends BaseCrudController
 {
     protected PresidioService $service; 
 

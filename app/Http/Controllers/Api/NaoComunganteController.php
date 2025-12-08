@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\ComunganteNaoComunganteRequest;
 use App\Services\NaoComunganteService;
 
-class NaoComunganteController extends VisitaBaseCrudController
+class NaoComunganteController extends BaseCrudController
 {
     protected NaoComunganteService $service; 
 

@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\SantaCeiaService;
 
-class SantaCeiaController extends VisitaBaseCrudController
+class SantaCeiaController extends BaseCrudController
 {
     protected SantaCeiaService $service; 
 

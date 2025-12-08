@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\HospitalService;
 
-class HospitalController extends VisitaBaseCrudController
+class HospitalController extends BaseCrudController
 {
     protected HospitalService $service; 
 

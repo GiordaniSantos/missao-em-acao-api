@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\BatismoInfantilService;
 
-class BatismoInfantilController extends VisitaBaseCrudController
+class BatismoInfantilController extends BaseCrudController
 {
     protected BatismoInfantilService $service; 
 

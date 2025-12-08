@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\SermaoService;
 
-class SermaoController extends VisitaBaseCrudController
+class SermaoController extends BaseCrudController
 {
     protected SermaoService $service; 
 

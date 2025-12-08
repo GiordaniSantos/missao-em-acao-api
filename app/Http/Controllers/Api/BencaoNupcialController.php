@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\BencaoNupcialService;
 
-class BencaoNupcialController extends VisitaBaseCrudController
+class BencaoNupcialController extends BaseCrudController
 {
     protected BencaoNupcialService $service; 
 

@@ -5,7 +5,7 @@ use App\Http\Requests\CommonRequest;
 use App\Http\Resources\CommonListResource;
 use App\Services\IncreduloService;
 
-class IncreduloController extends VisitaBaseCrudController
+class IncreduloController extends BaseCrudController
 {
     protected IncreduloService $service; 
 
