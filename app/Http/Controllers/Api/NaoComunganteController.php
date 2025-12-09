@@ -6,7 +6,7 @@ use App\Services\NaoComunganteService;
 
 class NaoComunganteController extends BaseCrudController
 {
-    protected NaoComunganteService $service; 
+    protected $service; 
 
     // protected string $resourceCollection = CommonListResource::class; 
     

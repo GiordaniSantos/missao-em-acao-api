@@ -7,7 +7,7 @@ use App\Services\SermaoService;
 
 class SermaoController extends BaseCrudController
 {
-    protected SermaoService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

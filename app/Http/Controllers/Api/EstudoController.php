@@ -7,7 +7,7 @@ use App\Services\EstudoService;
 
 class EstudoController extends BaseCrudController
 {
-    protected EstudoService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

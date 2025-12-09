@@ -7,7 +7,7 @@ use App\Services\DiscipuladoService;
 
 class DiscipuladoController extends BaseCrudController
 {
-    protected DiscipuladoService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

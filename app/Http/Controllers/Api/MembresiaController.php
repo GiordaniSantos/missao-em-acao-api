@@ -7,7 +7,7 @@ use App\Services\MembresiaService;
 
 class MembresiaController extends BaseCrudController
 {
-    protected MembresiaService $service; 
+    protected $service; 
 
     protected string $resourceCollection = MembresiaListResource::class; 
     

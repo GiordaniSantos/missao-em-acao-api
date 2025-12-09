@@ -7,7 +7,7 @@ use App\Services\BencaoNupcialService;
 
 class BencaoNupcialController extends BaseCrudController
 {
-    protected BencaoNupcialService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

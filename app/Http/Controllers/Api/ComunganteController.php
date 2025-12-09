@@ -6,7 +6,7 @@ use App\Services\ComunganteService;
 
 class ComunganteController extends BaseCrudController
 {
-    protected ComunganteService $service; 
+    protected $service; 
 
     // protected string $resourceCollection = CommonListResource::class; 
     

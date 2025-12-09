@@ -7,7 +7,7 @@ use App\Services\EstudoBiblicoService;
 
 class EstudoBiblicoController extends BaseCrudController
 {
-    protected EstudoBiblicoService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

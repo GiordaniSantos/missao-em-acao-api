@@ -43,7 +43,7 @@ class AbstractService implements ServiceInterface
         if (!$registro) {
             return null;
         }
-
+        
         $registro->id_usuario = $userId;
         $registro->nome = $data['nome'];
         $registro->created_at = Carbon::parse($data['created_at'])->setTimezone('America/Sao_Paulo');

@@ -7,7 +7,7 @@ use App\Services\SantaCeiaService;
 
 class SantaCeiaController extends BaseCrudController
 {
-    protected SantaCeiaService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

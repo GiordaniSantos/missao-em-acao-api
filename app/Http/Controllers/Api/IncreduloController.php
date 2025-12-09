@@ -7,7 +7,7 @@ use App\Services\IncreduloService;
 
 class IncreduloController extends BaseCrudController
 {
-    protected IncreduloService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

@@ -46,9 +46,16 @@ class BaseCrudController extends Controller
         return new $this->resourceCollection($registro);
     }
 
-    public function update(FormRequest $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int|string  $id // Corrigido para $id e o tipo primitivo
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $id_usuario = (int) request('id_usuario'); 
+        $id_usuario = request('id_usuario'); 
         $validatedData = app($this->formRequest)->validated();
       
         $registroAtualizado = $this->service->updateByIdAndUser($validatedData, $id, $id_usuario);
@@ -59,7 +66,7 @@ class BaseCrudController extends Controller
     public function destroy($id)
     {
         $id_usuario = (int) request('id_usuario');
-        $deletadoComSucesso = $this->service->deleteByIdAndUser($id, $id_usuario);
+        $deletadoComSucesso = $this->service->deleteByIdAndUserId($id, $id_usuario);
 
         if (!$deletadoComSucesso) {
             return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);

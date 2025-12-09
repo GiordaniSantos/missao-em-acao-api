@@ -7,7 +7,7 @@ use App\Services\HospitalService;
 
 class HospitalController extends BaseCrudController
 {
-    protected HospitalService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

@@ -7,7 +7,7 @@ use App\Services\BatismoProfissaoService;
 
 class BatismoProfissaoController extends BaseCrudController
 {
-    protected BatismoProfissaoService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

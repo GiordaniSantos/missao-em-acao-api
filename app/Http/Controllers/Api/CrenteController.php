@@ -9,7 +9,7 @@ use App\Services\CrenteService;
 
 class CrenteController extends Controller
 {
-    protected CrenteService $service;
+    protected $service;
 
     public function __construct(CrenteService $service)
     {

@@ -14,5 +14,5 @@ interface ServiceInterface
     public function find(int $id): Model|null;
     public function findByIdAndUser(int $id, int $idUsuario): ?Model;
     public function update(Model $model, array $attributes): bool;
-    public function updateByIdAndUser(array $data, int $registroId, int $userId): ?Model
+    public function updateByIdAndUser(array $data, int $registroId, int $userId): ?Model;
 }

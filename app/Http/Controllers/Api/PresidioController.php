@@ -7,7 +7,7 @@ use App\Services\PresidioService;
 
 class PresidioController extends BaseCrudController
 {
-    protected PresidioService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     

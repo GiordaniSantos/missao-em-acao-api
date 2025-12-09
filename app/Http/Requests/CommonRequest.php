@@ -24,6 +24,7 @@ class CommonRequest extends FormRequest
         return [
             'id_usuario' => 'exists:users,id',
             'nome' => 'max:150',
+            'created_at' => ['date'],
         ];
     }
 

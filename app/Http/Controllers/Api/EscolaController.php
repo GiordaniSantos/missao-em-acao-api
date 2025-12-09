@@ -7,7 +7,7 @@ use App\Services\EscolaService;
 
 class EscolaController extends BaseCrudController
 {
-    protected EscolaService $service; 
+    protected $service; 
 
     protected string $resourceCollection = CommonListResource::class; 
     
