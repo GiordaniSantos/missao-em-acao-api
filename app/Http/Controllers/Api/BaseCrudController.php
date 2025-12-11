@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Resources\CommonListResource;
 
 class BaseCrudController extends Controller
 {
@@ -31,8 +30,8 @@ class BaseCrudController extends Controller
         $validatedData = app($this->formRequest)->validated();
         $registroCriado = $this->service->create($validatedData);
 
-        // return response()->json($registroCriado, 201);
-        return new $this->resourceCollection($registroCriado);
+        return response()->json($registroCriado, 201);
+        //return new $this->resourceCollection($registroCriado);
     }
 
     public function show($id)
@@ -42,25 +41,17 @@ class BaseCrudController extends Controller
         if($registro === null){
             return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);
         }
-        // return response()->json($registro, 200);
-        return new $this->resourceCollection($registro);
+        return response()->json($registro, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int|string  $id // Corrigido para $id e o tipo primitivo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $id_usuario = request('id_usuario'); 
         $validatedData = app($this->formRequest)->validated();
       
         $registroAtualizado = $this->service->updateByIdAndUser($validatedData, $id, $id_usuario);
 
-        return new $this->resourceCollection($registroAtualizado);
+        return response()->json($registroAtualizado, 200);
     }
 
     public function destroy($id)
