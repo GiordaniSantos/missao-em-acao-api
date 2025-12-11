@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Models\{Membresia, Crente, Incredulo, Presidio, Enfermo, Hospital, Escola, BatismoInfantil, BatismoProfissao, BencaoNupcial, Comungante, SantaCeia, Estudo, Sermao, EstudoBiblico, Discipulado, NaoComungante, ReuniaoOracao};
+use App\Models\{AconselhamentoBiblico, Membresia, Crente, Incredulo, Presidio, Enfermo, Hospital, Escola, BatismoInfantil, BatismoProfissao, BencaoNupcial, Comungante, SantaCeia, Estudo, Sermao, EstudoBiblico, Discipulado, NaoComungante, ReuniaoOracao};
 use Illuminate\Support\Facades\DB;
 
 class DashboardService
@@ -23,6 +23,7 @@ class DashboardService
         'estudosBiblicos' => EstudoBiblico::class,
         'discipulados' => Discipulado::class,
         'reunioesOracao' => ReuniaoOracao::class,
+        'aconselhamentosBiblicos' => AconselhamentoBiblico::class,
     ];
 
     /**

@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\SantaCeiaController;
 use App\Http\Controllers\Api\SermaoController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ReuniaoOracaoController;
+use App\Http\Controllers\Api\AconselhamentoBiblicoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +76,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('discipulado', DiscipuladoController::class);
 
     Route::apiResource('reuniao-oracao', ReuniaoOracaoController::class);
+
+    Route::apiResource('aconselhamento-biblico', AconselhamentoBiblicoController::class);
 
     Route::apiResource('user', UserController::class);
 
