@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $userAtualizado = $this->service->updateById($request->all(), $userId);
+        $userAtualizado = $this->service->updateById($request->all(), $id);
 
         if ($userAtualizado === null) {
             return response()->json(['erro' => 'Usuário não encontrado.'], 404);

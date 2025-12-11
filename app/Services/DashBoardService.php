@@ -1,12 +1,12 @@
 <?php
 namespace App\Services;
 
-use App\Models\{Membresia, Crente, Incredulo, Presidio, Enfermo, Hospital, Escola, BatismoInfantil, BatismoProfissao, BencaoNupcial, Comungante, SantaCeia, Estudo, Sermao, EstudoBiblico, Discipulado, NaoComungante};
+use App\Models\{Membresia, Crente, Incredulo, Presidio, Enfermo, Hospital, Escola, BatismoInfantil, BatismoProfissao, BencaoNupcial, Comungante, SantaCeia, Estudo, Sermao, EstudoBiblico, Discipulado, NaoComungante, ReuniaoOracao};
 use Illuminate\Support\Facades\DB;
 
 class DashboardService
 {
-    // Define os modelos que serão contados
+
     protected array $modelsToCount = [
         'crentes' => Crente::class,
         'incredulos' => Incredulo::class,
@@ -22,6 +22,7 @@ class DashboardService
         'sermoes' => Sermao::class,
         'estudosBiblicos' => EstudoBiblico::class,
         'discipulados' => Discipulado::class,
+        'reunioesOracao' => ReuniaoOracao::class,
     ];
 
     /**

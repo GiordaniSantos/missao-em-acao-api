@@ -20,7 +20,7 @@ use App\Http\Controllers\Api\PresidioController;
 use App\Http\Controllers\Api\SantaCeiaController;
 use App\Http\Controllers\Api\SermaoController;
 use App\Http\Controllers\Api\UserController;
-use App\Models\Comungante;
+use App\Http\Controllers\Api\ReuniaoOracaoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +73,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('estudo-biblico', EstudoBiblicoController::class);
 
     Route::apiResource('discipulado', DiscipuladoController::class);
+
+    Route::apiResource('reuniao-oracao', ReuniaoOracaoController::class);
 
     Route::apiResource('user', UserController::class);
 
