@@ -23,7 +23,9 @@ class MembresiaRequest extends FormRequest
     {
         return [
             'id_usuario' => 'exists:users,id',
-            'nome' => 'max:150',
+            'quantidade' => 'required',
+            'nome' => 'required|max:20',
+            'created_at' => ['date'],
         ];
     }
 
@@ -35,8 +37,9 @@ class MembresiaRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'required' => 'O campo :attribute deve ser preenchido',
             'id_usuario.exists' => 'O usuário informado não existe!',
-            'nome.max' => 'O campo :attribute não pode ultrapassar 150 caracteres.',
+            'nome.max' => 'O campo :attribute não pode ultrapassar 20 caracteres.',
         ];
     }
 }
