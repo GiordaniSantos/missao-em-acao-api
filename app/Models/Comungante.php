@@ -13,22 +13,6 @@ class Comungante extends Model
 
     protected $fillable = ['id_usuario', 'quantidade', 'created_at'];
 
-    public static function rules(): array
-    {
-        return [
-            'id_usuario' => 'exists:users,id',
-            'quantidade' => 'numeric',
-        ];
-    }
-
-    public static function feedback(): array
-    {
-        return [
-            'id_usuario.exists' => 'O usuário informado não existe!',
-            'quantidade.numeric' => 'O campo :attribute deve ser do tipo número.',
-        ];
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo('App\Models\User', 'id_usuario', 'id');

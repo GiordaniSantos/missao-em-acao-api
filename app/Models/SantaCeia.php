@@ -21,20 +21,6 @@ class SantaCeia extends BaseModel
         ->useLogName('Santa Ceia');
     }
 
-    public static function rules(): array
-    {
-        return [
-            'id_usuario' => 'exists:users,id'
-        ];
-    }
-
-    public static function feedback(): array
-    {
-        return [
-            'id_usuario.exists' => 'O usuário informado não existe!'
-        ];
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
