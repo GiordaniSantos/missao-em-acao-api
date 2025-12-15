@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\SermaoController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ReuniaoOracaoController;
 use App\Http\Controllers\Api\AconselhamentoBiblicoController;
+use App\Http\Controllers\Api\RelatorioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -84,6 +85,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
 
     Route::get('relatorio-anual', [DashboardController::class, 'relatorioAnual']);
+
+    Route::get('/relatorio/exportar-pdf', [RelatorioController::class, 'exportarPdf']);
 });
 
 Route::post('password/reset', [AuthController::class, 'reset']);
