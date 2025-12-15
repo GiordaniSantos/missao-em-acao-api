@@ -14,7 +14,7 @@ class ComunganteService extends AbstractService
 
     public function getFirst(int $userId): ?Model
     {
-        return $this->repository->loadModel()->where('id_usuario', $userId)->orderBy('created_at', 'desc')->fisrt();
+        return $this->repository->loadModel()->where('id_usuario', $userId)->orderBy('created_at', 'desc')->first();
     }
 
     public function updateByIdAndUser(array $data, int $registroId, int $userId): ?Model
