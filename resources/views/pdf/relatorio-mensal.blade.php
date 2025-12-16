@@ -155,7 +155,7 @@
             <div class="meta-info">
                 <p><strong>Período:</strong> {{$mes}}/{{$ano}}</p>
                 @if ($usuario)
-                    <p><strong>Pastor(a):</strong> {{ $usuario->name }}</p>
+                    <p><strong>Nome:</strong> {{ $usuario->name }}</p>
                 @endif
             </div>
         </header>

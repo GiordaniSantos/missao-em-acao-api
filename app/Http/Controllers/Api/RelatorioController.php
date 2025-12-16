@@ -27,9 +27,9 @@ class RelatorioController extends Controller
         $mes = $request->input('mes', date('m'));
         $ano = $request->input('ano', date('Y'));
 
-        $results = $this->service->getMonthlyData($id_usuario, $mes, $ano);
+        $results = !$ano ? $this->service->getMonthlyData($id_usuario, $mes, $ano) : $this->service->getAnnualReportData($id_usuario, $ano);
 
-        $html = view('pdf.index', ['results' => $results, 'mes' => $mes, 'ano' => $ano, 'usuario' => $usuarioLogado])->render();
+        $html = view(!$ano ? 'pdf.relatorio-mensal' : 'pdf.relatorio-anual', ['results' => $results, 'mes' => $mes, 'ano' => $ano, 'usuario' => $usuarioLogado])->render();
         $pdf =  Pdf::loadHTML($html)->setPaper('a4', 'landscape')->setOption('isRemoteEnabled', true);
         return $pdf->stream();
     }
