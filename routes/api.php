@@ -87,6 +87,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('relatorio-anual', [DashboardController::class, 'relatorioAnual']);
 
     Route::get('/relatorio/exportar-pdf', [RelatorioController::class, 'exportarPdf']);
+    Route::get('/relatorio/exportar-excel', [RelatorioController::class, 'exportarExcel']);
 });
 
 Route::post('password/reset', [AuthController::class, 'reset']);
