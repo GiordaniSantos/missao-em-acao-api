@@ -27,7 +27,7 @@ class NaoComunganteService extends AbstractService
 
         $naoComungante->id_usuario = $userId;
         $naoComungante->quantidade = $data['quantidade'];
-        $naoComungante->created_at = Carbon::parse($data['created_at'])->setTimezone('America/Sao_Paulo');
+        //$naoComungante->created_at = Carbon::parse($data['created_at'])->setTimezone('America/Sao_Paulo');
         $naoComungante->save();
 
         return $naoComungante;

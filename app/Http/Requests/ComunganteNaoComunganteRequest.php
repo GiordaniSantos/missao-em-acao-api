@@ -24,7 +24,6 @@ class ComunganteNaoComunganteRequest extends FormRequest
         return [
             'id_usuario' => 'exists:users,id',
             'quantidade' => 'numeric',
-            'created_at' => ['date'],
         ];
     }
 

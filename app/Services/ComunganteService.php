@@ -27,7 +27,7 @@ class ComunganteService extends AbstractService
 
         $comungante->id_usuario = $userId;
         $comungante->quantidade = $data['quantidade'];
-        $comungante->created_at = Carbon::parse($data['created_at'])->setTimezone('America/Sao_Paulo');
+        //$comungante->created_at = Carbon::parse($data['created_at'])->setTimezone('America/Sao_Paulo');
         $comungante->save();
 
         return $comungante;
