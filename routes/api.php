@@ -23,6 +23,8 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ReuniaoOracaoController;
 use App\Http\Controllers\Api\AconselhamentoBiblicoController;
 use App\Http\Controllers\Api\RelatorioController;
+use App\Http\Controllers\Api\ReuniaoConselhoController;
+use App\Http\Controllers\Api\SociedadeInternaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +81,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('reuniao-oracao', ReuniaoOracaoController::class);
 
     Route::apiResource('aconselhamento-biblico', AconselhamentoBiblicoController::class);
+
+    Route::apiResource('reunioes-conselho', ReuniaoConselhoController::class);
+
+    Route::apiResource('sociedades-internas', SociedadeInternaController::class);
 
     Route::apiResource('user', UserController::class);
 
